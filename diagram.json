@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "author": "Practica UART",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp32a", "top": 0, "left": -4.76, "attrs": {} },
+    { "type": "board-esp32-devkit-c-v4", "id": "esp32b", "top": 0, "left": 408.04, "attrs": {} },
+    { "type": "wokwi-led", "id": "led1", "top": 15.6, "left": 311, "attrs": { "color": "red" } },
+    {
+      "type": "wokwi-servo",
+      "id": "servo1",
+      "top": 274.6,
+      "left": 231.4,
+      "rotate": 90,
+      "attrs": {}
+    }
+  ],
+  "connections": [
+    [ "esp32a:17", "esp32b:16", "green", [ "h43.24", "v-134.4", "h393.6", "v144" ] ],
+    [
+      "esp32a:GND.1",
+      "esp32b:GND.1",
+      "black",
+      [ "h-14.21", "v9.6", "h-48", "v96", "h201.6", "v-105.6" ]
+    ],
+    [ "esp32a:4", "esp32a:GND.1", "black", [ "h24.04", "v-153.6", "h-134.4", "v163.2" ] ],
+    [ "esp32b:4", "esp32b:3V3", "red", [ "h48", "v-201.6", "h-182.4", "v86.4" ] ],
+    [ "esp32a:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp32a:RX", "$serialMonitor:TX", "", [] ],
+    [ "led1:C", "esp32b:GND.1", "green", [ "h0.4", "v48", "h67.2", "v48" ] ],
+    [ "led1:A", "esp32b:25", "green", [ "v28.8", "h86.4" ] ],
+    [ "servo1:GND", "esp32b:GND.1", "black", [ "v-67.2", "h28.8", "v-19.2", "h38.4", "v-9.6" ] ],
+    [ "servo1:V+", "esp32b:5V", "red", [ "v-28.8", "h-0.1", "v-19.2" ] ],
+    [ "servo1:PWM", "esp32b:26", "green", [ "v-9.6", "h-0.2", "v-124.8" ] ]
+  ],
+  "dependencies": {}
+}
